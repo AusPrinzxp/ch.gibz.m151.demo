@@ -37,6 +37,8 @@ namespace ch.gibz.m151.demo.api
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
+            services.AddDbContext<TodoContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:M151"]));
+
             // Swagger
             services.AddSwaggerGen(c =>
             {
